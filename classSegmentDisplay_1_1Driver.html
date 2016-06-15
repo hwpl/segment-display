@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a86d2c253401c6eec60a950b5986bbff0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSegmentDisplay_1_1Driver.html#a86d2c253401c6eec60a950b5986bbff0">setDigit</a> (size_t num, uint8_t digit)</td></tr>
 <tr class="memdesc:a86d2c253401c6eec60a950b5986bbff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the digit at index num to the given one.  <a href="#a86d2c253401c6eec60a950b5986bbff0">More...</a><br /></td></tr>
 <tr class="separator:a86d2c253401c6eec60a950b5986bbff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a545636484836ffb67e4bfdc448ca6224"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSegmentDisplay_1_1Driver.html#a545636484836ffb67e4bfdc448ca6224">setSegments</a> (size_t num, uint8_t segments)</td></tr>
+<tr class="memdesc:a545636484836ffb67e4bfdc448ca6224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the digit at index num to the given segments.  <a href="#a545636484836ffb67e4bfdc448ca6224">More...</a><br /></td></tr>
+<tr class="separator:a545636484836ffb67e4bfdc448ca6224"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af55af3dfedd69a72f9224817a8af6cb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSegmentDisplay_1_1Driver.html#af55af3dfedd69a72f9224817a8af6cb4">refresh</a> (unsigned int light_time=0)</td></tr>
 <tr class="memdesc:af55af3dfedd69a72f9224817a8af6cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh on the display.  <a href="#af55af3dfedd69a72f9224817a8af6cb4">More...</a><br /></td></tr>
 <tr class="separator:af55af3dfedd69a72f9224817a8af6cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,7 +224,7 @@ template&lt;size_t NUM_DIGITS&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00113">113</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00125">125</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 
 </div>
 </div>
@@ -307,6 +310,54 @@ template&lt;size_t NUM_DIGITS&gt; </div>
 </dl>
 
 <p>Definition at line <a class="el" href="segment__display_8h_source.html#l00086">86</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a545636484836ffb67e4bfdc448ca6224"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t NUM_DIGITS&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classSegmentDisplay_1_1Driver.html">SegmentDisplay::Driver</a>&lt; NUM_DIGITS &gt;::setSegments </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>segments</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Change the digit at index num to the given segments. </p>
+<p>This functions bypassed the decimal decoder, so every segment can be enabled independently.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>The index of the digit to change. </td></tr>
+    <tr><td class="paramname">segments</td><td>The new segments, where the LSB is segment a. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00112">112</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 
 </div>
 </div>
