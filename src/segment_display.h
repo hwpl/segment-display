@@ -1,3 +1,6 @@
+#ifndef _SEGMENT_DISPLAY
+#define _SEGMENT_DISPLAY
+
 #include <avr/pgmspace.h>
 
 #include "std/initializer_list.h"
@@ -141,3 +144,5 @@ class Driver {
 };
 
 } // namespace SegmentDisplay
+
+#endif // _SEGMENT_DISPLAY
