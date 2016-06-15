@@ -62,13 +62,13 @@ class Driver {
             size_t i = 0;
             for(auto pin : digit_pins) {
                 if(i >= NUM_DIGITS) break;
-                this->digits[i++] = pin;
+                this->digit_pins[i++] = pin;
                 pinMode(pin, OUTPUT);
             }
             i = 0;
             for(auto pin : segment_pins) {
                 if(i >= 8) break;
-                segments[i++] = pin;
+                this->segment_pins[i++] = pin;
                 pinMode(pin, OUTPUT);
             }
 
@@ -110,7 +110,7 @@ class Driver {
         ///                   default of `0` is sufficient for most cases.
         void refresh(unsigned int light_time = 0) {
             size_t i = 0;
-            for(auto segment : segments) {
+            for(auto segment : segment_pins) {
                 // If only 7 segments were specified
                 if(segment < 0) continue;
 
@@ -118,7 +118,7 @@ class Driver {
 
                 size_t j = 0;
                 for(auto digitState : state) {
-                    digitalWrite(digits[j++],(digitState & 1 << i) == 0);
+                    digitalWrite(digit_pins[j++],(digitState & 1 << i) == 0);
                 }
 
                 // Give the segment some time to light up
@@ -126,7 +126,7 @@ class Driver {
 
                 j = 0;
                 for(auto digitState : state) {
-                    digitalWrite(digits[j++], HIGH);
+                    digitalWrite(digit_pins[j++], HIGH);
                 }
 
                 digitalWrite(segment, LOW);
@@ -135,8 +135,8 @@ class Driver {
         }
 
     private:
-        uint8_t segments[8] = {-1, -1, -1, -1, -1, -1, -1, -1};
-        uint8_t digits[NUM_DIGITS];
+        uint8_t segment_pins[8] = {-1, -1, -1, -1, -1, -1, -1, -1};
+        uint8_t digit_pins[NUM_DIGITS];
 
         uint8_t state[NUM_DIGITS];
 };
