@@ -48,16 +48,27 @@ class Driver {
             }
         }
 
-        void setState(std::initializer_list<uint8_t> state) {
+        /// Change the digits to the given ones.
+        ///
+        /// \see setDigit()
+        /// \param digits A list of exactly NUM_DIGITS digits.
+        void setDigits(std::initializer_list<uint8_t> digits) {
             size_t i = 0;
-            for(auto digitState : state) {
-                setDigit(i++, digitState);
+            for(auto digit : digits) {
+                setDigit(i++, digit);
             }
         }
 
-        void setState(size_t digit, uint8_t state) {
-            if(digit >= DIGITS || state > 17) return;
-            this->state[digit] = pgm_read_byte_near(DECODER + state);
+        /// Change the digit at index num to the given one.
+        ///
+        /// All digits passed through the seven segment decoder, so you can
+        /// pass decimal digits and the constants defined in this class.
+        ///
+        /// \param num The index of the digit to change
+        /// \param digit The new digit
+        void setDigit(size_t num, uint8_t digit) {
+            if(index >= DIGITS || digit > 17) return;
+            this->state[num] = pgm_read_byte_near(DECODER + digit);
         }
 
         void refresh(unsigned int lightTime = 0) {
