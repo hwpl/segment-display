@@ -5,6 +5,7 @@
 namespace HWP {
 namespace SegmentDisplay {
 
+// Simple seven segment decimal decoder
 const PROGMEM uint8_t DECODER[] = {
     //.gfedcba
     0b00111111, // 0
@@ -27,6 +28,23 @@ const PROGMEM uint8_t DECODER[] = {
     0b01000000, // DASH
 };
 
+/// %Driver for a multiplexed segment display.
+///
+/// \tparam NUM_DIGITS Specifies the number of digits of the segment display.
+///
+/// ## Example
+///
+/// ```
+/// using SegmentDisplay::Driver;
+///
+/// Driver<4> seg({2, 3, 4, 5}, {6, 7, 8, 9, 10, 11, 12});
+///
+/// seg.setState({Driver::DASH, 4, 2, Driver::DASH});
+///
+/// void loop() {
+///     seg.refresh();
+/// }
+/// ```
 template<size_t NUM_DIGITS>
 class Driver {
     public:
@@ -35,15 +53,20 @@ class Driver {
         /// Only enable the segment in the middle (`G`).
         const static size_t DASH = 17;
 
-        Driver(std::initializer_list<uint8_t> digits, std::initializer_list<uint8_t> pins) {
+        /// Create a new driver instance using the given pins
+        ///
+        /// \param digit_pins **Exactly** NUM_DIGITS pins to use for the led
+        ///                   cathodes of each digit.
+        /// \param segment_pins 7 or 8 pins to use for the segments (a to g/h).
+        Driver(std::initializer_list<uint8_t> digit_pins, std::initializer_list<uint8_t> segment_pins) {
             size_t i = 0;
-            for(auto pin : digits) {
+            for(auto pin : digit_pins) {
                 if(i >= NUM_DIGITS) break;
                 this->digits[i++] = pin;
                 pinMode(pin, OUTPUT);
             }
             i = 0;
-            for(auto pin : pins) {
+            for(auto pin : segment_pins) {
                 if(i >= 8) break;
                 segments[i++] = pin;
                 pinMode(pin, OUTPUT);
@@ -77,7 +100,15 @@ class Driver {
             this->state[num] = pgm_read_byte_near(DECODER + digit);
         }
 
-        void refresh(unsigned int lightTime = 0) {
+        /// Refresh on the display
+        ///
+        /// Turns on the needed segments of all digits for a short amount of
+        /// time. This *must* be called repeatedly in your main loops to trick
+        /// the human brain into believing the display is constantly lit.
+        ///
+        /// \param light_time The amount of time each segment is lit up. The
+        ///                   default of `0` is sufficient for most cases.
+        void refresh(unsigned int light_time = 0) {
             size_t i = 0;
             for(auto segment : segments) {
                 // If only 7 segments were specified
@@ -91,7 +122,7 @@ class Driver {
                 }
 
                 // Give the segment some time to light up
-                delayMicroseconds(lightTime);
+                delayMicroseconds(light_time);
 
                 j = 0;
                 for(auto digitState : state) {
