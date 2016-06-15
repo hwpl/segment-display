@@ -51,14 +51,13 @@ class Driver {
         void setState(std::initializer_list<uint8_t> state) {
             size_t i = 0;
             for(auto digitState : state) {
-                if(i >= DIGITS) break;
-                this->state[i++] = digitState;
+                setDigit(i++, digitState);
             }
         }
 
         void setState(size_t digit, uint8_t state) {
-            if(digit >= DIGITS) return;
-            this->state[digit] = state;
+            if(digit >= DIGITS || state > 17) return;
+            this->state[digit] = pgm_read_byte_near(DECODER + state);
         }
 
         void refresh(unsigned int lightTime = 0) {
@@ -68,7 +67,7 @@ class Driver {
 
                 size_t j = 0;
                 for(auto digitState : state) {
-                    digitalWrite(digits[j++],(pgm_read_byte_near(DECODER + digitState) & 1 << i) == 0);
+                    digitalWrite(digits[j++],(digitState & 1 << i) == 0);
                 }
 
                 // Give the segment some time to light up
