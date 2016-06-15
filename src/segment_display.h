@@ -102,6 +102,18 @@ class Driver {
             this->state[num] = pgm_read_byte_near(DECODER + digit);
         }
 
+        /// Change the digit at index num to the given segments.
+        ///
+        /// This functions bypasses the decimal decoder, so every segment can
+        /// be enabled independently.
+        ///
+        /// \param num The index of the digit to change.
+        /// \param segments The new segments, where the LSB is segment a.
+        void setSegments(size_t num, uint8_t segments) {
+            if(index >= DIGITS) return;
+            this->state[num] = segments;
+        }
+
         /// Refresh on the display
         ///
         /// Turns on the needed segments of all digits for a short amount of
