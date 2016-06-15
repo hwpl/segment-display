@@ -2,7 +2,6 @@
 
 #include "std/initializer_list.h"
 
-namespace HWP {
 namespace SegmentDisplay {
 
 // Simple seven segment decimal decoder
@@ -142,4 +141,3 @@ class Driver {
 };
 
 } // namespace SegmentDisplay
-} // namespace HWP
