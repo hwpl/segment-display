@@ -30,13 +30,13 @@ const PROGMEM uint8_t DECODER[] = {
 const size_t EMPTY = 16;
 const size_t DASH = 17;
 
-template<size_t DIGITS>
+template<size_t NUM_DIGITS>
 class Driver {
     public:
         Driver(std::initializer_list<uint8_t> digits, std::initializer_list<uint8_t> pins) {
             size_t i = 0;
             for(auto pin : digits) {
-                if(i >= DIGITS) break;
+                if(i >= NUM_DIGITS) break;
                 this->digits[i++] = pin;
                 pinMode(pin, OUTPUT);
             }
@@ -96,9 +96,9 @@ class Driver {
 
     private:
         uint8_t segments[7] = {-1};
-        uint8_t digits[DIGITS] = {-1};
+        uint8_t digits[NUM_DIGITS] = {-1};
 
-        uint8_t state[DIGITS] = {EMPTY};
+        uint8_t state[NUM_DIGITS] = {EMPTY};
 };
 
 } // namespace SegmentDisplay
