@@ -27,12 +27,14 @@ const PROGMEM uint8_t DECODER[] = {
     0b01000000, // DASH
 };
 
-const size_t EMPTY = 16;
-const size_t DASH = 17;
-
 template<size_t NUM_DIGITS>
 class Driver {
     public:
+        /// Turn all segments off.
+        const static size_t EMPTY = 16;
+        /// Only enable the segment in the middle (`G`).
+        const static size_t DASH = 17;
+
         Driver(std::initializer_list<uint8_t> digits, std::initializer_list<uint8_t> pins) {
             size_t i = 0;
             for(auto pin : digits) {
