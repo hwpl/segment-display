@@ -41,7 +41,7 @@ const PROGMEM uint8_t DECODER[] = {
 ///
 /// Driver<4> seg({2, 3, 4, 5}, {6, 7, 8, 9, 10, 11, 12});
 ///
-/// seg.setState({Driver::DASH, 4, 2, Driver::DASH});
+/// seg.setDigits({Driver::DASH, 4, 2, Driver::DASH});
 ///
 /// void loop() {
 ///     seg.refresh();
