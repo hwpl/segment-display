@@ -44,9 +44,13 @@ class Driver {
             }
             i = 0;
             for(auto pin : pins) {
-                if(i >= 7) break;
+                if(i >= 8) break;
                 segments[i++] = pin;
                 pinMode(pin, OUTPUT);
+            }
+
+            for(i = 0; i < NUM_DIGITS; ++i) {
+                setDigit(i, EMPTY);
             }
         }
 
@@ -76,6 +80,9 @@ class Driver {
         void refresh(unsigned int lightTime = 0) {
             size_t i = 0;
             for(auto segment : segments) {
+                // If only 7 segments were specified
+                if(segment < 0) continue;
+
                 digitalWrite(segment, HIGH);
 
                 size_t j = 0;
@@ -97,10 +104,10 @@ class Driver {
         }
 
     private:
-        uint8_t segments[7] = {-1};
-        uint8_t digits[NUM_DIGITS] = {-1};
+        uint8_t segments[8] = {-1, -1, -1, -1, -1, -1, -1, -1};
+        uint8_t digits[NUM_DIGITS];
 
-        uint8_t state[NUM_DIGITS] = {EMPTY};
+        uint8_t state[NUM_DIGITS];
 };
 
 } // namespace SegmentDisplay
