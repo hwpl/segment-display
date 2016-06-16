@@ -98,7 +98,7 @@ class Driver {
         /// \param num The index of the digit to change
         /// \param digit The new digit
         void setDigit(size_t num, uint8_t digit) {
-            if(index >= DIGITS || digit > 17) return;
+            if(index >= NUM_DIGITS || digit > 17) return;
             this->state[num] = pgm_read_byte_near(DECODER + digit);
         }
 
@@ -110,7 +110,7 @@ class Driver {
         /// \param num The index of the digit to change.
         /// \param segments The new segments, where the LSB is segment a.
         void setSegments(size_t num, uint8_t segments) {
-            if(index >= DIGITS) return;
+            if(index >= NUM_DIGITS) return;
             this->state[num] = segments;
         }
 
