@@ -6,11 +6,12 @@ decimal decoder.
 ## Example
 
 ```cpp
-using SegmentDisplay::Driver;
+using Seg = SegmentDisplay::Driver<4>;
 
-Driver<4> seg({2, 3, 4, 5}, {6, 7, 8, 9, 10, 11, 12});
+Seg seg({2, 3, 4, 5}, {6, 7, 8, 9, 10, 11, 12});
 
-seg.setDigits({Driver::DASH, 4, 2, Driver::DASH});
+seg.setDigits({Seg::DASH, 4, 2});
+seg.setSegments(3, 0b00001000); // underscore
 
 void loop() {
     seg.refresh();
