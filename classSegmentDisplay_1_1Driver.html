@@ -140,8 +140,8 @@ class SegmentDisplay::Driver&lt; NUM_DIGITS &gt;</h3>
   </dd>
 </dl>
 <h2>Example</h2>
-<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="classSegmentDisplay_1_1Driver.html">SegmentDisplay::Driver</a>;</div><div class="line"></div><div class="line">Driver&lt;4&gt; seg({2, 3, 4, 5}, {6, 7, 8, 9, 10, 11, 12});</div><div class="line"></div><div class="line">seg.<a class="code" href="classSegmentDisplay_1_1Driver.html#a0068e056fadc2123b658a13996b3f2eb">setDigits</a>({<a class="code" href="classSegmentDisplay_1_1Driver.html#af65d4dcfeaf7d628a8b80bfd8f8a0718">Driver::DASH</a>, 4, 2, <a class="code" href="classSegmentDisplay_1_1Driver.html#af65d4dcfeaf7d628a8b80bfd8f8a0718">Driver::DASH</a>});</div><div class="line"></div><div class="line"><span class="keywordtype">void</span> loop() {</div><div class="line">    seg.refresh();</div><div class="line">}</div></div><!-- fragment --> 
-<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00051">51</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> Seg = <a class="code" href="classSegmentDisplay_1_1Driver.html">SegmentDisplay::Driver&lt;4&gt;</a>;</div><div class="line"></div><div class="line">Seg seg({2, 3, 4, 5}, {6, 7, 8, 9, 10, 11, 12});</div><div class="line"></div><div class="line">seg.<a class="code" href="classSegmentDisplay_1_1Driver.html#a0068e056fadc2123b658a13996b3f2eb">setDigits</a>({Seg::DASH, 4, 2});</div><div class="line">seg.setSegments(3, 0b00001000); <span class="comment">// underscore</span></div><div class="line"></div><div class="line"><span class="keywordtype">void</span> loop() {</div><div class="line">    seg.refresh();</div><div class="line">}</div></div><!-- fragment --> 
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00052">52</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7ca65ddc89a62fa8771153aa6c43cbf9"></a>
 <div class="memitem">
@@ -186,7 +186,7 @@ template&lt;size_t NUM_DIGITS&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00063">63</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00064">64</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 
 </div>
 </div>
@@ -224,7 +224,7 @@ template&lt;size_t NUM_DIGITS&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00125">125</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00126">126</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 
 </div>
 </div>
@@ -272,7 +272,7 @@ template&lt;size_t NUM_DIGITS&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00100">100</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00101">101</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 
 </div>
 </div>
@@ -309,7 +309,7 @@ template&lt;size_t NUM_DIGITS&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00086">86</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00087">87</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 
 </div>
 </div>
@@ -357,7 +357,7 @@ template&lt;size_t NUM_DIGITS&gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00112">112</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
+<p>Definition at line <a class="el" href="segment__display_8h_source.html#l00113">113</a> of file <a class="el" href="segment__display_8h_source.html">segment_display.h</a>.</p>
 
 </div>
 </div>
